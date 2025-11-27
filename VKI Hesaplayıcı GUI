@@ -1,0 +1,89 @@
+'''
+Kilo tiplerine göre vücut kitle indeksi değerleri şu şekildedir:
+
+-----------------------------------------------------------------
+Kilo Tipi	Vücut Kitle İndeksi (VKİ) Değeri
+Zayıf	18, 5 kg/m²'nin altı
+Sağlıklı	18, 5 kg/m² - 24, 9 kg/m²
+Şişman	25 kg/m² - 29, 9 kg/m²
+Obez	30 kg/m² - 39, 9 kg/m²
+Aşırı Obez (Morbid Obez)	40 kg/m²'nin üzeri
+
+-----------------------------------------------------------------
+'''
+'''
+------------------------------------------------------
+| Kilo Tipi                    | VKİ Aralığı         |
+------------------------------------------------------
+| Zayıf                        | 18.5 altında        |
+| Sağlıklı                     | 18.5 - 24.9         |
+| Şişman                       | 25 - 29.9           |
+| Obez                         | 30 - 39.9           |
+| Aşırı Obez (Morbid Obez)     | 40 ve üzeri         |
+------------------------------------------------------
+'''
+#formül VKİ = ağırlık (kg) / boy (m)² şeklindedir
+
+import tkinter
+from tkinter import *
+
+def vki_hesapla():
+
+    if (kilo_gir.get()) == "" or (boy_gir.get()) == "":
+        sonuc.config(text="Lütfen Kilo Ve Boy alanlarını boş bırakmayın !")
+        return
+    if kilo_gir.get() == str(0):
+        sonuc.config(text="Kilo Sıfır Olamaz")
+        return
+    try:
+        agirlik = int(kilo_gir.get())
+        boy = int(boy_gir.get()) / 100
+        VKI = agirlik / (boy ** 2)
+        VKI_Sonucu = VKI
+        kilo_tipi = ""
+        if VKI_Sonucu < 18.5:
+            kilo_tipi = "Zayıf"
+        elif VKI_Sonucu >= 18.5 and VKI_Sonucu <= 24.9:
+            kilo_tipi = "Sağlıklı"
+        elif VKI_Sonucu >= 25 and VKI_Sonucu <= 29.9:
+            kilo_tipi = "Şişman"
+        elif VKI_Sonucu >= 30 and VKI_Sonucu <= 39.9:
+            kilo_tipi = "Obez"
+        elif VKI_Sonucu >= 40:
+            kilo_tipi = "Aşırı Obez (Morbid Obez)"
+        else:
+            sonuc.config(text="Hata Lütfen Doğru değer girdiğinizi kontrol edin")
+        VKI = str(VKI)
+        sonuc.config(text=f"VKİ değeriniz {VKI[:4:]} Siz {kilo_tipi} bir kişisiniz")
+    except ValueError:
+        sonuc.config(text="Lütfen Değerleri Sadece Sayı Giriniz")
+    except ZeroDivisionError:
+        sonuc.config(text="boy 0 olamaz")
+
+
+pencere = Tk()
+pencere.title("VKİ Hesaplayıcı")
+pencere.minsize(width=300,height=250)
+pencere.resizable(width=False,height=False)
+pencere.config(bg="black")
+
+kilo_sor = Label(bg="black",fg="white",text="Kilonuzu giriniz (kg)",pady=10)
+kilo_sor.pack()
+
+kilo_gir = Entry()
+kilo_gir.pack()
+
+boy_sor = Label(bg="black",fg="white",text="Boyunuzu Giriniz (cm)",pady=10)
+boy_sor.pack()
+
+boy_gir = Entry()
+boy_gir.pack()
+
+hesapla = Button(text="Hesapla",pady=2,padx=2,width=10,height=0)
+hesapla.pack(pady=10)
+hesapla.config(command=vki_hesapla)
+sonuc = Label(bg="black",fg="white",height=2)
+sonuc.pack(pady=10)
+
+
+tkinter.mainloop()

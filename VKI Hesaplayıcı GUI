@@ -1,17 +1,6 @@
 '''
 Kilo tiplerine göre vücut kitle indeksi değerleri şu şekildedir:
 
------------------------------------------------------------------
-Kilo Tipi	Vücut Kitle İndeksi (VKİ) Değeri
-Zayıf	18, 5 kg/m²'nin altı
-Sağlıklı	18, 5 kg/m² - 24, 9 kg/m²
-Şişman	25 kg/m² - 29, 9 kg/m²
-Obez	30 kg/m² - 39, 9 kg/m²
-Aşırı Obez (Morbid Obez)	40 kg/m²'nin üzeri
-
------------------------------------------------------------------
-'''
-'''
 ------------------------------------------------------
 | Kilo Tipi                    | VKİ Aralığı         |
 ------------------------------------------------------
@@ -21,6 +10,7 @@ Aşırı Obez (Morbid Obez)	40 kg/m²'nin üzeri
 | Obez                         | 30 - 39.9           |
 | Aşırı Obez (Morbid Obez)     | 40 ve üzeri         |
 ------------------------------------------------------
+
 '''
 #formül VKİ = ağırlık (kg) / boy (m)² şeklindedir
 

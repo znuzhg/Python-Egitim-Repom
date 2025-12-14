@@ -1,1 +1,1 @@
-# Python-E-itim-Repom
+# Python-Eğitim-Repom
